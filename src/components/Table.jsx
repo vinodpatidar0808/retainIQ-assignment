@@ -7,6 +7,8 @@ const Table = () => {
       <TableHeader />
       <div>
         <Row />
+        <Row />
+        <Row />
       </div>
     </div>
   );
