@@ -1,4 +1,4 @@
-export const initialTableState = [{ tags: [], columns: [], selectedTags: {} }];
+export const initialTableState = [{ tags: [], columns: [{}], selectedTags: {} }];
 
 export const maxNumberOfRows = 10;
 export const maxNumberOfColumns = 10;

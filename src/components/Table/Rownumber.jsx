@@ -1,7 +1,7 @@
 import { FaRegTrashCan } from 'react-icons/fa6';
 import { LuGrip } from 'react-icons/lu';
 
-const Rownumber = ({ rowHover }) => {
+const Rownumber = ({ rownumber,  rowHover }) => {
   const handleRowDelete = () => {
     console.log('delete row ');
   };
@@ -15,7 +15,7 @@ const Rownumber = ({ rowHover }) => {
           <FaRegTrashCan className="fill-red-500 " />
         </span>
       )}
-      <p className="">1</p>
+      <p className="">{rownumber}</p>
       <LuGrip className="fill-black" />
     </div>
   );
