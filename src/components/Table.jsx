@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import Row from './Row';
 import TableHeader from './TableHeader';
+import EmptyRow from "./Table/EmptyRow";
 
 const Table = () => {
-  const [tableData, setTableData] = useState([]);
+  const [tableData, setTableData] = useState([{type: "EMPTY"}]);
   const [headers, setHeaders] = useState([{ isPrimary: true, name: 'Primary Variant' }]);
 
   return (
@@ -19,6 +20,7 @@ const Table = () => {
         headers={headers}
         setHeaders={setHeaders}
       />
+      <EmptyRow />
     </div>
   );
 };
