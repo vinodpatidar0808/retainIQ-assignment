@@ -7,7 +7,7 @@ const Rownumber = ({ rowHover }) => {
   };
 
   return (
-    <div className="min-w-32 px-3 flex items-center justify-end  text-black font-bold text-xl relative ">
+    <div className="min-w-32  px-3 flex items-center justify-end  text-black font-bold text-xl relative ">
       {rowHover && (
         <span
           className="absolute top-11 right-4 cursor-pointer"
