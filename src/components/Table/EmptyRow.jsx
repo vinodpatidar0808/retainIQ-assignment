@@ -2,7 +2,6 @@ import { FaPlus } from 'react-icons/fa6';
 import { getDefaultRowState } from '../../utils/constants';
 
 const EmptyRow = ({ setTableData, numberOfColumns }) => {
-  console.log('numberOfColumns ', numberOfColumns);
   const handleAddRow = () => {
     setTableData((curr) => [...curr, getDefaultRowState(numberOfColumns)]);
   };

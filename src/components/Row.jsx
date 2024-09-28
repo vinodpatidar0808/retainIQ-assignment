@@ -17,6 +17,7 @@ const Row = ({ setTableData, data, rownumber, setHeaders }) => {
         <Rownumber
           rowHover={rowHover}
           rownumber={rownumber}
+          setTableData={setTableData}
         />
 
         {/* Product Filter */}

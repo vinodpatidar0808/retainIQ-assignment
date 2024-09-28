@@ -1,11 +1,24 @@
 import { useState } from 'react';
 import { FaEllipsisVertical, FaRegTrashCan } from 'react-icons/fa6';
 
-const TableHeader = ({ headers, setHeaders }) => {
+const TableHeader = ({ headers, setHeaders, setTableData }) => {
   const [hover, setHover] = useState(false);
-  const handleColumnDelete = () => {
-    console.log('delete column');
+  const handleColumnDelete = (index) => {
+    // Delete current column,
+    setHeaders((curr) => {
+      curr.splice(index, 1);
+      return curr;
+    });
+
+    // Delete entries in each row for delete column
+    setTableData((curr) => {
+      return curr.map((item) => {
+        item.columns.splice(index, 1);
+        return item;
+      });
+    });
   };
+
   return (
     <div className="flex w-full  items-center text-gray-500 font-semibold mb-4">
       <div className="flex sticky left-0 bg-gray-100">
@@ -28,12 +41,12 @@ const TableHeader = ({ headers, setHeaders }) => {
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
-              <p>{header.name}</p>
+              <p>Variant {index + 1}</p>
               <div className="flex gap-2">
                 {hover && (
                   <span
                     className=" cursor-pointer"
-                    onClick={handleColumnDelete}>
+                    onClick={() => handleColumnDelete(index)}>
                     <FaRegTrashCan className="fill-red-500 " />
                   </span>
                 )}
