@@ -7,7 +7,6 @@ import Rownumber from './Table/Rownumber';
 const Row = ({ setHeaders }) => {
   const [rowHover, setRowHover] = useState(false);
 
-  console.log('setHeaders', setHeaders);
   return (
     <div
       onMouseEnter={() => setRowHover(true)}
