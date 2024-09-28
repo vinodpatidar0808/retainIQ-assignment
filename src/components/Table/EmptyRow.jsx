@@ -1,7 +1,10 @@
 import { FaPlus } from 'react-icons/fa6';
+import { getDefaultRowState } from '../../utils/constants';
 
-const EmptyRow = () => {
+const EmptyRow = ({ setTableData, numberOfColumns }) => {
+  console.log('numberOfColumns ', numberOfColumns);
   const handleAddRow = () => {
+    setTableData((curr) => [...curr, getDefaultRowState(numberOfColumns)]);
   };
   return (
     <div className="sticky left-0 flex w-32 justify-end px-3 h-16 items-center text-xs text-gray-700 ">

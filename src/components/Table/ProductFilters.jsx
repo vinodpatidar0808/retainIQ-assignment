@@ -1,7 +1,6 @@
 import AddButton from './AddButton';
 
 const ProductFilters = ({ tags = [], selectedTags = {} }) => {
-  console.log('!tags', !tags);
   return (
     <div className="min-w-96  border-x border-gray-300 text-center py-2 pr-3 pl-6 ">
       <div

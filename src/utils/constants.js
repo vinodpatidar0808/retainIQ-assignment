@@ -1,5 +1,13 @@
 export const initialTableState = [{ tags: [], columns: [{}], selectedTags: {} }];
 
+export const getDefaultRowState = (numberOfColums = 1) => {
+  return {
+    tags: [],
+    columns: Array.from({ length: numberOfColums }, () => ({})),
+    selectedTags: {},
+  };
+};
+
 export const maxNumberOfRows = 10;
 export const maxNumberOfColumns = 10;
 
