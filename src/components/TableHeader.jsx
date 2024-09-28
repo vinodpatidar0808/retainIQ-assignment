@@ -1,6 +1,11 @@
-import { FaEllipsisVertical } from 'react-icons/fa6';
+import { useState } from 'react';
+import { FaEllipsisVertical, FaRegTrashCan } from 'react-icons/fa6';
 
 const TableHeader = () => {
+  const [hover, setHover] = useState(false);
+  const handleColumnDelete = () => {
+    console.log('delete column');
+  };
   return (
     <div className="flex w-full  items-center text-gray-500 font-semibold mb-4">
       <div className="flex sticky left-0 bg-gray-100">
@@ -9,26 +14,27 @@ const TableHeader = () => {
           Product Filter
         </div>
       </div>
+
       <div className="flex overflow-x-auto no-scrollbar  ">
         <div className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
           <p>Primary Variant</p>
           <FaEllipsisVertical />
         </div>
-        <div className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
+        <div
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+          className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
           <p>Variant 2</p>
-          <FaEllipsisVertical />
-        </div>
-        <div className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
-          <p>Variant 2</p>
-          <FaEllipsisVertical />
-        </div>
-        <div className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
-          <p>Variant 2</p>
-          <FaEllipsisVertical />
-        </div>
-        <div className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
-          <p>Variant 2</p>
-          <FaEllipsisVertical />
+          <div className="flex gap-2">
+            {hover && (
+              <span
+                className=" cursor-pointer"
+                onClick={handleColumnDelete}>
+                <FaRegTrashCan className="fill-red-500 " />
+              </span>
+            )}
+            <FaEllipsisVertical />
+          </div>
         </div>
       </div>
     </div>
