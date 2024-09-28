@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { initialTableState } from '../utils/constants';
 import Row from './Row';
 import EmptyRow from './Table/EmptyRow';
@@ -7,6 +7,8 @@ import TableHeader from './TableHeader';
 const Table = () => {
   const [tableData, setTableData] = useState(initialTableState);
   const [headers, setHeaders] = useState([{ isPrimary: true, name: 'Primary Variant' }]);
+  const dragItem = useRef(null);
+  const dragOverItem = useRef(null);
 
   return (
     <div className="rounded border shadow-md overflow-x-scroll no-scrollbar h-screen mt-4 pl-4 pr-2 py-2 bg-gray-100">
@@ -27,6 +29,8 @@ const Table = () => {
           setHeaders={setHeaders}
           data={data}
           setTableData={setTableData}
+          dragItem={dragItem}
+          dragOverItem={dragOverItem}
         />
       ))}
       <EmptyRow

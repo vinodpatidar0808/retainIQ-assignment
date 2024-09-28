@@ -1,67 +1,59 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import AddColumnButton from './Table/AddColumnButton';
 import ProductFilters from './Table/ProductFilters';
 import ProductVariant from './Table/ProductVariant';
 import Rownumber from './Table/Rownumber';
 
-const Row = ({ tableData, setTableData, data, rowIndex, setHeaders }) => {
-  console.log('tableData:', tableData);
-  console.log('data: ', data);
+const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dragOverItem }) => {
   const [rowHover, setRowHover] = useState(false);
-  const dragItem = useRef(null);
-  const dragOverItem = useRef(null);
-  console.log('outside: dragItem, dragOverItem', dragItem.current, dragOverItem.current);
 
   const handleDragStart = (e, index) => {
-    console.log('e: ', e);
     dragItem.current = index;
-    // setTimeout(() => {
-    //   e.target.style.visibility = 'hidden';
-    // }, 0);
+    setTimeout(() => {
+      e.target.style.visibility = 'hidden';
+    }, 0);
   };
 
-  const handleDragEnter = async (e, index) => {
+  const handleDragEnter = (e, index) => {
     dragOverItem.current = index;
-    // console.log('dragItem, dragOverItem ', dragItem.current, dragOverItem.current);
 
     const copyListItems = structuredClone(tableData);
-    // console.log('copyListItems: ', copyListItems);
 
     if (dragItem.current === null) return;
 
-    const dragItemContent = copyListItems[dragItem.current];
+    const dragItemContent = copyListItems[+dragItem.current];
+    copyListItems.splice(dragItem.current, 1);
 
-    await copyListItems.splice(dragItem.current, 1);
-
-    await copyListItems.splice(dragOverItem.current, 0, dragItemContent);
-    // console.log('copyListItems');
+    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
 
     setTableData(copyListItems);
-    // setTimeout(() => {
-    //   dragItem.current = dragOverItem.current;
-    //   dragOverItem.current = null;
-    // }, 0);
+    dragItem.current = dragOverItem.current;
+    dragOverItem.current = null;
   };
 
-  // const handleDragEnd = (e, index) => {
-  //   console.log('dragEnd');
-  //   e.preventDefault();
-  //   // dragItem.current = null;
-  //   setTimeout(() => {});
-  //   e.target.style.visibility = 'visible';
-  //   // setRefresh(curr => curr + 1)
-  // };
+  const handleDragEnd = (e, index) => {
+    e.preventDefault();
+    dragItem.current = null;
+    setTimeout(() => {});
+    e.target.style.visibility = 'visible';
+  };
 
   return (
     <div
-      onMouseEnter={() => setRowHover(true)}
-      onMouseLeave={() => setRowHover(false)}
+      onMouseEnter={(e) => {
+        // e.stopPropagation();
+        setRowHover(true);
+      }}
+      onMouseLeave={(e) => {
+        // e.stopPropagation();
+        setRowHover(false);
+      }}
       className="flex w-full h-40 text-gray-500 font-semibold mb-2 "
       draggable
       onDragStart={(e) => handleDragStart(e, rowIndex)}
       onDragEnter={(e) => handleDragEnter(e, rowIndex)}
       onDragOver={(e) => e.preventDefault()}
-      onDragEnd={(e) => e.preventDefault()}>
+      onDragEnd={(e) => handleDragEnd(e)}>
       {/* Row number and delete button on hover */}
       <div className="flex sticky left-0 bg-gray-100">
         <Rownumber
