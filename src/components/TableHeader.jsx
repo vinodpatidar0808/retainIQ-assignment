@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { FaEllipsisVertical, FaRegTrashCan } from 'react-icons/fa6';
 
-const TableHeader = () => {
+const TableHeader = ({ headers, setHeaders }) => {
   const [hover, setHover] = useState(false);
   const handleColumnDelete = () => {
     console.log('delete column');
@@ -20,7 +20,30 @@ const TableHeader = () => {
           <p>Primary Variant</p>
           <FaEllipsisVertical />
         </div>
-        <div
+
+        {headers?.map((header, index) => {
+          return !header.isPrimary ? (
+            <div
+              key={`${header.name}-${index}`}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+              className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
+              <p>{header.name}</p>
+              <div className="flex gap-2">
+                {hover && (
+                  <span
+                    className=" cursor-pointer"
+                    onClick={handleColumnDelete}>
+                    <FaRegTrashCan className="fill-red-500 " />
+                  </span>
+                )}
+                <FaEllipsisVertical />
+              </div>
+            </div>
+          ) : null;
+        })}
+
+        {/* <div
           onMouseEnter={() => setHover(true)}
           onMouseLeave={() => setHover(false)}
           className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
@@ -35,7 +58,7 @@ const TableHeader = () => {
             )}
             <FaEllipsisVertical />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

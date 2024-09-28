@@ -4,9 +4,10 @@ import AddColumnButton from './Table/AddColumnButton';
 import ProductFilters from './Table/ProductFilters';
 import Rownumber from './Table/Rownumber';
 
-const Row = () => {
+const Row = ({ setHeaders }) => {
   const [rowHover, setRowHover] = useState(false);
 
+  console.log('setHeaders', setHeaders);
   return (
     <div
       onMouseEnter={() => setRowHover(true)}
@@ -71,7 +72,7 @@ const Row = () => {
         <div className="min-w-48 w-48 border-r border-gray-300 text-center py-2 pr-3 pl-6 ">
           <AddButton text={'Add design'} />
         </div>
-        <AddColumnButton />
+        <AddColumnButton setHeaders={setHeaders} />
         {/* <div className="min-w-48 w-48 text-center py-2 pr-3 pl-6 ">
           <AddButton />
         </div> */}
