@@ -20,8 +20,9 @@ const Table = () => {
       {/* Rows */}
       {tableData.map((data, index) => (
         <Row
+          tableData={tableData}
           key={index}
-          rownumber={index + 1}
+          rowIndex={index}
           headers={headers}
           setHeaders={setHeaders}
           data={data}

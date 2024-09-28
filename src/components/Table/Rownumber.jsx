@@ -2,7 +2,7 @@ import { FaRegTrashCan } from 'react-icons/fa6';
 import { LuGrip } from 'react-icons/lu';
 import { initialTableState } from '../../utils/constants';
 
-const Rownumber = ({ setTableData, rownumber, rowHover, setRefresh }) => {
+const Rownumber = ({ setTableData, rowIndex, rowHover }) => {
   const handleRowDelete = (index) => {
     setTableData((curr) => {
       if (curr.length === 1) {
@@ -19,12 +19,12 @@ const Rownumber = ({ setTableData, rownumber, rowHover, setRefresh }) => {
       {rowHover && (
         <span
           className="absolute top-11 right-4 cursor-pointer"
-          onClick={() => handleRowDelete(rownumber - 1)}>
+          onClick={() => handleRowDelete(rowIndex)}>
           <FaRegTrashCan className="fill-red-500 " />
         </span>
       )}
-      <p className="">{rownumber}</p>
-      <LuGrip className="fill-black" />
+      <p className="">{rowIndex + 1}</p>
+      <LuGrip className="fill-black cursor-grab" />
     </div>
   );
 };

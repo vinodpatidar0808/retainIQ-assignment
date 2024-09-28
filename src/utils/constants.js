@@ -1,4 +1,4 @@
-export const initialTableState = [{ tags: [], columns: [{}], selectedTags: {} }];
+export const initialTableState = [{ tags: ["sale","contains","new"], columns: [{}], selectedTags: {"new": true, } }];
 
 export const getDefaultRowState = (numberOfColums = 1) => {
   return {
