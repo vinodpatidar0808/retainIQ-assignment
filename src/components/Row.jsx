@@ -1,13 +1,19 @@
+import { useState } from "react";
 import AddButton from './Table/AddButton';
 import AddColumnButton from './Table/AddColumnButton';
 import ProductFilters from './Table/ProductFilters';
 import Rownumber from './Table/Rownumber';
 
 const Row = () => {
+  const [rowHover, setRowHover] = useState(false);
+
   return (
-    <div className="flex w-full h-40 text-gray-500 font-semibold mb-2">
+    <div
+      onMouseEnter={() => setRowHover(true)}
+      onMouseLeave={() => setRowHover(false)}
+      className="flex w-full h-40 text-gray-500 font-semibold mb-2">
       {/* Row number and delete button on hover */}
-      <Rownumber />
+      <Rownumber rowHover={rowHover} />
 
       {/* Product Filter */}
       <ProductFilters />
