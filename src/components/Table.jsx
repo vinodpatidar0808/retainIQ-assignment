@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { initialTableState } from '../utils/constants';
 import Row from './Row';
+import EmptyRow from './Table/EmptyRow';
 import TableHeader from './TableHeader';
-import EmptyRow from "./Table/EmptyRow";
 
 const Table = () => {
-  const [tableData, setTableData] = useState([{type: "EMPTY"}]);
+  const [tableData, setTableData] = useState(initialTableState);
   const [headers, setHeaders] = useState([{ isPrimary: true, name: 'Primary Variant' }]);
 
   return (
@@ -16,10 +17,14 @@ const Table = () => {
       />
 
       {/* Rows */}
-      <Row
-        headers={headers}
-        setHeaders={setHeaders}
-      />
+      {tableData.map((data, index) => (
+        <Row
+          key={index}
+          headers={headers}
+          setHeaders={setHeaders}
+          data={data}
+        />
+      ))}
       <EmptyRow />
     </div>
   );
