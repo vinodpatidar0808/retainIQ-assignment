@@ -7,7 +7,9 @@ const AddButton = ({ text = '' }) => {
         text ? 'bg-white' : ''
       } h-full border-2 border-dashed flex flex-col items-center px-6 py-3 text-xs gap-1 text-gray-700  justify-center `}>
       <button
-        className={`flex w-fit border py-3 px-3 rounded-md items-center gap-2  text-ellipsis overflow-hidden whitespace-nowrap`}>
+        className={`${
+          !text ? 'bg-white' : ''
+        } flex w-fit border py-3 px-3 rounded-md items-center gap-2  text-ellipsis overflow-hidden whitespace-nowrap`}>
         <FaPlus />
         {text}
       </button>
