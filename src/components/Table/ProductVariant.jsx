@@ -2,7 +2,9 @@ import AddButton from './AddButton';
 import ProductImageWithText from './ProductImageWithText';
 
 const ProductVariant = ({ rowIndex, columnIndex, setTableData, url = '', title = '' }) => {
-  const handleDeleteVariant = (item) => {};
+  const handleDeleteVariant = (item) => {
+    
+  };
 
   return (
     <>

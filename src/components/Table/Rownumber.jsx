@@ -1,17 +1,26 @@
+import { useState } from 'react';
 import { FaRegTrashCan } from 'react-icons/fa6';
 import { LuGrip } from 'react-icons/lu';
-import { initialTableState } from '../../utils/constants';
+import { initialTableState, showToastMessage } from '../../utils/constants';
+import Backdrop from '../Backdrop';
 
 const Rownumber = ({ setTableData, rowIndex, rowHover }) => {
+  const [loading, setLoading] = useState(false);
   const handleRowDelete = (index) => {
-    setTableData((curr) => {
-      if (curr.length === 1) {
-        return initialTableState;
-      }
-      let tempArray = [...curr];
-      tempArray.splice(index, 1);
-      return tempArray;
-    });
+    setLoading(true);
+    // putting timeout to show the loading spinner and effect to the user
+    setTimeout(() => {
+      setTableData((curr) => {
+        if (curr.length === 1) {
+          return initialTableState;
+        }
+        let tempArray = [...curr];
+        tempArray.splice(index, 1);
+        return tempArray;
+      });
+      showToastMessage('SUCCESS', 'Row Deleted');
+      setLoading(false);
+    }, 500);
   };
 
   return (
@@ -25,6 +34,9 @@ const Rownumber = ({ setTableData, rowIndex, rowHover }) => {
       )}
       <p className="">{rowIndex + 1}</p>
       <LuGrip className="fill-black cursor-grab" />
+      <Backdrop isOpen={loading}>
+        <div className="loader-dots"></div>
+      </Backdrop>
     </div>
   );
 };
