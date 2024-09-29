@@ -8,14 +8,18 @@ import AddTags from './AddTags';
 const AddButton = ({ type, rowIndex, columnIndex, setTableData, text = '', handleAddTags }) => {
   const [openSelectDesign, setOpenSelectDesign] = useState(false);
 
+  // opens backdrop with elible child component
   const handleOpen = () => {
     setOpenSelectDesign(true);
   };
 
+  // closes the backdrop,
   const handleClose = () => {
     setOpenSelectDesign(false);
   };
 
+  // Add design variant for the selected variant type
+  // todo: move to top level, for edit flow, if time permits.
   const handleAddVariant = (item) => {
     setTableData((curr) => {
       let tempArray = structuredClone(curr);
@@ -35,7 +39,7 @@ const AddButton = ({ type, rowIndex, columnIndex, setTableData, text = '', handl
         {text}
       </button>
       <Backdrop isOpen={openSelectDesign}>
-        {!type ? (
+        {!(type === 'filters') ? (
           <SelectDesign
             handleAddDesign={handleAddVariant}
             handleClose={handleClose}

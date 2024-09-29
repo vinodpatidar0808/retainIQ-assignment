@@ -6,6 +6,8 @@ import Backdrop from './Backdrop';
 const TableHeader = ({ headers, setHeaders, setTableData }) => {
   const [loading, setLoading] = useState(false);
   const [hover, setHover] = useState(false);
+
+  // This function is used to delete a column in the table, artificial delay is added to show the loading effect
   const handleColumnDelete = (index) => {
     setLoading(true);
     setTimeout(() => {
@@ -15,7 +17,7 @@ const TableHeader = ({ headers, setHeaders, setTableData }) => {
         return curr;
       });
 
-      // Delete entries in each row for delete column
+      // Delete entries in each row for selected column to be deleted
       setTableData((curr) => {
         return curr.map((item) => {
           item.columns.splice(index, 1);
@@ -65,23 +67,6 @@ const TableHeader = ({ headers, setHeaders, setTableData }) => {
               </div>
             ) : null;
           })}
-
-          {/* <div
-          onMouseEnter={() => setHover(true)}
-          onMouseLeave={() => setHover(false)}
-          className="pr-3 pl-6 py-2 flex justify-between items-center min-w-48 border-r border-gray-300">
-          <p>Variant 2</p>
-          <div className="flex gap-2">
-            {hover && (
-              <span
-                className=" cursor-pointer"
-                onClick={handleColumnDelete}>
-                <FaRegTrashCan className="fill-red-500 " />
-              </span>
-            )}
-            <FaEllipsisVertical />
-          </div>
-        </div> */}
         </div>
       </div>
       <Backdrop isOpen={loading}>

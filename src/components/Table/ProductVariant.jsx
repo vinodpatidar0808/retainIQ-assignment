@@ -3,6 +3,7 @@ import AddButton from './AddButton';
 import ProductImageWithText from './ProductImageWithText';
 
 const ProductVariant = ({ rowIndex, columnIndex, setTableData, url = '', title = '' }) => {
+  // delete selected variant on button click from table data
   const handleDeleteVariant = () => {
     // Delete current variant
     setTableData((curr) => {

@@ -4,36 +4,39 @@ import ProductFilters from './Table/ProductFilters';
 import ProductVariant from './Table/ProductVariant';
 import Rownumber from './Table/Rownumber';
 
-const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dragOverItem }) => {
+const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItemRef, dragOverItemRef }) => {
   const [rowHover, setRowHover] = useState(false);
 
+  // sets the current element being draged and hide the element being dragged from ui(dom)
   const handleDragStart = (e, index) => {
-    dragItem.current = index;
+    dragItemRef.current = index;
     setTimeout(() => {
       e.target.style.visibility = 'hidden';
     }, 0);
   };
 
+  // updates the table when dragged element enters other element in draggable area.
   const handleDragEnter = (e, index) => {
-    dragOverItem.current = index;
+    dragOverItemRef.current = index;
 
     const copyListItems = structuredClone(tableData);
 
-    if (dragItem.current === null) return;
+    if (dragItemRef.current === null) return;
 
-    const dragItemContent = copyListItems[+dragItem.current];
-    copyListItems.splice(dragItem.current, 1);
+    const dragItemContent = copyListItems[+dragItemRef.current];
+    copyListItems.splice(dragItemRef.current, 1);
 
-    copyListItems.splice(dragOverItem.current, 0, dragItemContent);
+    copyListItems.splice(dragOverItemRef.current, 0, dragItemContent);
 
     setTableData(copyListItems);
-    dragItem.current = dragOverItem.current;
-    dragOverItem.current = null;
+    dragItemRef.current = dragOverItemRef.current;
+    dragOverItemRef.current = null;
   };
 
+  // Called when dragged element is dropped,
   const handleDragEnd = (e) => {
     e.preventDefault();
-    dragItem.current = null;
+    dragItemRef.current = null;
     setTimeout(() => {});
     e.target.style.visibility = 'visible';
   };
@@ -65,9 +68,8 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
         />
       </div>
 
-      {/* Product variants with scroll  */}
+      {/* Product variants with scroll: this columns will scroll horizontally whenever needed  */}
       <div className="flex  ">
-        {/* <ProductVariant isEmpty={false} /> */}
         {data?.columns?.map((item, ind) => {
           return (
             <ProductVariant
@@ -81,8 +83,6 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
             />
           );
         })}
-        {/* <ProductVariant isEmpty={true} /> */}
-        {/* <ProductVariant /> */}
 
         <AddColumnButton
           setTableData={setTableData}

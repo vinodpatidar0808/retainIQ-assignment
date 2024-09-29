@@ -1,7 +1,9 @@
 import { toast } from 'react-toastify';
 
+// Initial table state
 export const initialTableState = [{ tags: [], columns: [{}], selectedTags: { new: true } }];
 
+// this will provide default row state when a new row is added, maxNumberOfColumns is the number of columns to add in the row
 export const getDefaultRowState = (numberOfColums = 1) => {
   return {
     tags: [],
@@ -10,11 +12,14 @@ export const getDefaultRowState = (numberOfColums = 1) => {
   };
 };
 
-export const suggestedTags = ['sale', 'contains', 'new'];
+// this will provide suggesions for tags to add in the table
+export const suggestedTags = ['sale', 'contains', 'new', 'discount', "men's", "woman's"];
 
-export const maxNumberOfRows = 10;
-export const maxNumberOfColumns = 10;
+// Can use to control max number of allowed rows and columns
+// export const maxNumberOfRows = 10;
+// export const maxNumberOfColumns = 10;
 
+// This will trigger a notification to show toas message in <ToastContainer /> used inside app component
 export const showToastMessage = (type, message) => {
   if (type === 'SUCCESS') {
     toast.success(message, {
@@ -31,6 +36,7 @@ export const showToastMessage = (type, message) => {
   // Add other types when needed
 };
 
+// sample data: for selecting designs
 export const sampleData = [
   {
     id: '64f2db47b4aefa1d6bff5979', // MongoDB-style ObjectId

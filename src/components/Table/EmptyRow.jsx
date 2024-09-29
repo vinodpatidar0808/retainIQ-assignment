@@ -4,6 +4,8 @@ import { getDefaultRowState, showToastMessage } from '../../utils/constants';
 
 const EmptyRow = ({ setTableData, numberOfColumns }) => {
   const [loading, setLoading] = useState(false);
+
+  // This function is used to add a new row in the table, artificial delay is added to show the loading effect
   const handleAddRow = () => {
     setLoading(true);
     // putting timeout to show the loading spinner and effect
@@ -13,6 +15,7 @@ const EmptyRow = ({ setTableData, numberOfColumns }) => {
       setLoading(false);
     }, 500);
   };
+  
   return (
     <div className="sticky left-0 flex w-32 justify-end px-3 h-16 items-center text-xs text-gray-700 ">
       <button
@@ -21,7 +24,6 @@ const EmptyRow = ({ setTableData, numberOfColumns }) => {
         className={`outline-none hover:shadow-md  bg-white flex w-fit border py-3 px-3 rounded-md items-center gap-2  text-ellipsis overflow-hidden whitespace-nowrap`}>
         {!loading ? <FaPlus /> : <div className="loader-spinner w-3 "></div>}
       </button>
-
     </div>
   );
 };

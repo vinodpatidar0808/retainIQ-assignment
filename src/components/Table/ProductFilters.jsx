@@ -1,16 +1,18 @@
-import { showToastMessage } from "../../utils/constants";
+import { showToastMessage } from '../../utils/constants';
 import AddButton from './AddButton';
 
 const ProductFilters = ({ rowIndex, setTableData, tags = [], selectedTags = {} }) => {
+  // add provided tags to table state, which replaces add product filters button
   const handleAddTags = (tags) => {
     setTableData((curr) => {
       let tempArray = structuredClone(curr);
       tempArray[rowIndex].tags = tags;
       return tempArray;
     });
-    showToastMessage("SUCCESS", "Product Filters Added");
+    showToastMessage('SUCCESS', 'Product Filters Added');
   };
 
+  // select unselect tags based on their current state from product filters in each row
   const handleSelectTag = (tag) => {
     setTableData((curr) => {
       let tempArray = structuredClone(curr);

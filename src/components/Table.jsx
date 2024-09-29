@@ -7,8 +7,8 @@ import TableHeader from './TableHeader';
 const Table = () => {
   const [tableData, setTableData] = useState(initialTableState);
   const [headers, setHeaders] = useState([{ isPrimary: true, name: 'Primary Variant' }]);
-  const dragItem = useRef(null);
-  const dragOverItem = useRef(null);
+  const dragItemRef = useRef(null); // holds element being dragged
+  const dragOverItemRef = useRef(null); // holds element being dragged over
 
   return (
     <div className="rounded border shadow-md overflow-x-scroll no-scrollbar h-screen mt-4 pl-4 pr-2 py-2 bg-gray-100">
@@ -19,7 +19,7 @@ const Table = () => {
         setTableData={setTableData}
       />
 
-      {/* Rows */}
+      {/*Table Rows */}
       {tableData.map((data, index) => (
         <Row
           tableData={tableData}
@@ -29,8 +29,8 @@ const Table = () => {
           setHeaders={setHeaders}
           data={data}
           setTableData={setTableData}
-          dragItem={dragItem}
-          dragOverItem={dragOverItem}
+          dragItemRef={dragItemRef}
+          dragOverItemRef={dragOverItemRef}
         />
       ))}
       <EmptyRow

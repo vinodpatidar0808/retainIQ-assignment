@@ -6,6 +6,8 @@ import Backdrop from '../Backdrop';
 
 const Rownumber = ({ setTableData, rowIndex, rowHover }) => {
   const [loading, setLoading] = useState(false);
+
+  // This function is used to delete a row in the table, artificial delay is added to show the loading effect
   const handleRowDelete = (index) => {
     setLoading(true);
     // putting timeout to show the loading spinner and effect to the user
