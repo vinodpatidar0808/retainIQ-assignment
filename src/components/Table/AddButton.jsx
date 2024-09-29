@@ -3,8 +3,9 @@ import { FaPlus } from 'react-icons/fa6';
 import { showToastMessage } from '../../utils/constants';
 import Backdrop from '../Backdrop';
 import SelectDesign from '../SelectDesign';
+import AddTags from './AddTags';
 
-const AddButton = ({ rowIndex, columnIndex, setTableData, text = '' }) => {
+const AddButton = ({ type, rowIndex, columnIndex, setTableData, text = '', handleAddTags }) => {
   const [openSelectDesign, setOpenSelectDesign] = useState(false);
 
   const handleOpen = () => {
@@ -34,10 +35,14 @@ const AddButton = ({ rowIndex, columnIndex, setTableData, text = '' }) => {
         {text}
       </button>
       <Backdrop isOpen={openSelectDesign}>
-        <SelectDesign
-          handleAddDesign={handleAddVariant}
-          handleClose={handleClose}
-        />
+        {!type ? (
+          <SelectDesign
+            handleAddDesign={handleAddVariant}
+            handleClose={handleClose}
+          />
+        ) : (
+          <AddTags handleAddTags={handleAddTags} />
+        )}
       </Backdrop>
     </>
   );

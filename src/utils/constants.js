@@ -1,8 +1,6 @@
 import { toast } from 'react-toastify';
 
-export const initialTableState = [
-  { tags: ['sale', 'contains', 'new'], columns: [{}], selectedTags: { new: true } },
-];
+export const initialTableState = [{ tags: [], columns: [{}], selectedTags: { new: true } }];
 
 export const getDefaultRowState = (numberOfColums = 1) => {
   return {
@@ -11,6 +9,8 @@ export const getDefaultRowState = (numberOfColums = 1) => {
     selectedTags: {},
   };
 };
+
+export const suggestedTags = ['sale', 'contains', 'new'];
 
 export const maxNumberOfRows = 10;
 export const maxNumberOfColumns = 10;
@@ -29,7 +29,6 @@ export const showToastMessage = (type, message) => {
     });
   }
   // Add other types when needed
-  
 };
 
 export const sampleData = [

@@ -60,6 +60,8 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
         <ProductFilters
           tags={data.tags}
           selectedTags={data.selectedTags}
+          rowIndex={rowIndex}
+          setTableData={setTableData}
         />
       </div>
 

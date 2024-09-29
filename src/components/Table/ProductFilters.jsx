@@ -1,6 +1,22 @@
 import AddButton from './AddButton';
 
-const ProductFilters = ({ tags = [], selectedTags = {} }) => {
+const ProductFilters = ({ rowIndex, setTableData, tags = [], selectedTags = {} }) => {
+  const handleAddTags = (tags) => {
+    setTableData((curr) => {
+      let tempArray = structuredClone(curr);
+      tempArray[rowIndex].tags = tags;
+      return tempArray;
+    });
+  };
+
+  const handleSelectTag = (tag) => {
+    setTableData((curr) => {
+      let tempArray = structuredClone(curr);
+      tempArray[rowIndex].selectedTags[tag] = !tempArray[rowIndex].selectedTags[tag];
+      return tempArray;
+    });
+  };
+
   return (
     <div className="min-w-96  border-x border-gray-300 text-center py-2 pr-3 pl-6 ">
       <div
@@ -8,12 +24,17 @@ const ProductFilters = ({ tags = [], selectedTags = {} }) => {
           !tags.length ? ' text-xs ' : 'text-[10px] font-medium'
         } `}>
         {!tags.length ? (
-          <AddButton text="Add Product Filters" />
+          <AddButton
+            handleAddTags={handleAddTags}
+            type="filters"
+            text="Add Product Filters"
+          />
         ) : (
           tags.map((tag, index) => (
             <p
               key={index}
-              className={`border rounded-md px-1 py-1 ${
+              onClick={() => handleSelectTag(tag)}
+              className={`border cursor-pointer rounded-md px-1 py-1 ${
                 selectedTags[tag] ? 'bg-green-100 text-green-700 border-green-300' : ''
               }`}>
               {tag}
