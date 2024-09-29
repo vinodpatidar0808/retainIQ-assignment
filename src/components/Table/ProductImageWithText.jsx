@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { FiEdit } from 'react-icons/fi';
+import { FaRegTrashCan } from 'react-icons/fa6';
 
-const ProductImageWithText = ({ imgUrl, title }) => {
+
+const ProductImageWithText = ({handleDeleteVariant, imgUrl, title }) => {
   const [hover, setHover] = useState(false);
   return (
     <>
@@ -16,8 +18,9 @@ const ProductImageWithText = ({ imgUrl, title }) => {
         />
 
         {hover && (
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 cursor-pointer p-2  rounded-md bg-white ">
-            <FiEdit className=" w-6 h-6 " />
+          <div className="flex items-center gap-2  absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-2  rounded-md bg-white ">
+            <FiEdit className=" w-4 h-4 cursor-pointer " />
+            <FaRegTrashCan onClick={handleDeleteVariant} className="w-4 h-4 fill-red-600 cursor-pointer" />
           </div>
         )}
       </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
+import { showToastMessage } from '../../utils/constants';
 import Backdrop from '../Backdrop';
 import SelectDesign from '../SelectDesign';
 
@@ -15,13 +16,12 @@ const AddButton = ({ rowIndex, columnIndex, setTableData, text = '' }) => {
   };
 
   const handleAddVariant = (item) => {
-    console.log('rowIndex, columnIndex, item', rowIndex, columnIndex, item);
     setTableData((curr) => {
       let tempArray = structuredClone(curr);
       tempArray[rowIndex].columns[columnIndex] = item;
       return tempArray;
     });
-
+    showToastMessage('SUCCESS', 'Variant Template Updated');
     handleClose();
   };
 

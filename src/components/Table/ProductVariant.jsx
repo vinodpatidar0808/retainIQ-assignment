@@ -1,9 +1,16 @@
+import { showToastMessage } from '../../utils/constants';
 import AddButton from './AddButton';
 import ProductImageWithText from './ProductImageWithText';
 
 const ProductVariant = ({ rowIndex, columnIndex, setTableData, url = '', title = '' }) => {
-  const handleDeleteVariant = (item) => {
-    
+  const handleDeleteVariant = () => {
+    // Delete current variant
+    setTableData((curr) => {
+      let tempArray = structuredClone(curr);
+      tempArray[rowIndex].columns[columnIndex] = {};
+      return tempArray;
+    });
+    showToastMessage('SUCCESS', 'Variant Template Deleted');
   };
 
   return (
@@ -24,6 +31,7 @@ const ProductVariant = ({ rowIndex, columnIndex, setTableData, url = '', title =
             <ProductImageWithText
               imgUrl={url}
               title={title}
+              handleDeleteVariant={handleDeleteVariant}
             />
           )}
         </div>
