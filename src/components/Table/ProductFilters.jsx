@@ -1,3 +1,4 @@
+import { showToastMessage } from "../../utils/constants";
 import AddButton from './AddButton';
 
 const ProductFilters = ({ rowIndex, setTableData, tags = [], selectedTags = {} }) => {
@@ -7,6 +8,7 @@ const ProductFilters = ({ rowIndex, setTableData, tags = [], selectedTags = {} }
       tempArray[rowIndex].tags = tags;
       return tempArray;
     });
+    showToastMessage("SUCCESS", "Product Filters Added");
   };
 
   const handleSelectTag = (tag) => {
