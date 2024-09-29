@@ -31,7 +31,7 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
     dragOverItem.current = null;
   };
 
-  const handleDragEnd = (e, index) => {
+  const handleDragEnd = (e) => {
     e.preventDefault();
     dragItem.current = null;
     setTimeout(() => {});
@@ -40,14 +40,8 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
 
   return (
     <div
-      onMouseEnter={(e) => {
-        // e.stopPropagation();
-        setRowHover(true);
-      }}
-      onMouseLeave={(e) => {
-        // e.stopPropagation();
-        setRowHover(false);
-      }}
+      onMouseEnter={() => setRowHover(true)}
+      onMouseLeave={() => setRowHover(false)}
       className="flex w-full h-40 text-gray-500 font-semibold mb-2 "
       draggable
       onDragStart={(e) => handleDragStart(e, rowIndex)}
@@ -81,6 +75,7 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
               key={ind}
               rowIndex={rowIndex}
               columnIndex={ind}
+              setTableData={setTableData}
             />
           );
         })}

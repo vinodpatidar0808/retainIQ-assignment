@@ -3,10 +3,10 @@ import { FaPlus } from 'react-icons/fa6';
 import Backdrop from '../Backdrop';
 import SelectDesign from '../SelectDesign';
 
-const AddButton = ({ isProductFilter, text = '' }) => {
+const AddButton = ({ rowIndex, columnIndex, setTableData, text = '' }) => {
   const [openSelectDesign, setOpenSelectDesign] = useState(false);
 
-  const handleAdd = () => {
+  const handleOpen = () => {
     setOpenSelectDesign(true);
   };
 
@@ -14,16 +14,30 @@ const AddButton = ({ isProductFilter, text = '' }) => {
     setOpenSelectDesign(false);
   };
 
+  const handleAddVariant = (item) => {
+    console.log('rowIndex, columnIndex, item', rowIndex, columnIndex, item);
+    setTableData((curr) => {
+      let tempArray = structuredClone(curr);
+      tempArray[rowIndex].columns[columnIndex] = item;
+      return tempArray;
+    });
+
+    handleClose();
+  };
+
   return (
     <>
       <button
-        onClick={handleAdd}
+        onClick={handleOpen}
         className={`outline-none hover:shadow-md bg-white flex w-fit border py-3 px-3 rounded-md items-center gap-2  text-ellipsis overflow-hidden whitespace-nowrap `}>
         <FaPlus />
         {text}
       </button>
-      <Backdrop isOpen={openSelectDesign} >
-        <SelectDesign handleClose={handleClose} />
+      <Backdrop isOpen={openSelectDesign}>
+        <SelectDesign
+          handleAddDesign={handleAddVariant}
+          handleClose={handleClose}
+        />
       </Backdrop>
     </>
   );

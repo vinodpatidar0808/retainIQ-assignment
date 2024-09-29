@@ -1,8 +1,8 @@
-import { useState } from 'react';
 import AddButton from './AddButton';
 import ProductImageWithText from './ProductImageWithText';
 
-const ProductVariant = ({ url = '', title = '' }) => {
+const ProductVariant = ({ rowIndex, columnIndex, setTableData, url = '', title = '' }) => {
+  const handleDeleteVariant = (item) => {};
 
   return (
     <>
@@ -13,6 +13,9 @@ const ProductVariant = ({ url = '', title = '' }) => {
           }`}>
           {!url ? (
             <AddButton
+              rowIndex={rowIndex}
+              columnIndex={columnIndex}
+              setTableData={setTableData}
               text="Add design"
             />
           ) : (
@@ -23,8 +26,6 @@ const ProductVariant = ({ url = '', title = '' }) => {
           )}
         </div>
       </div>
-
-
     </>
   );
 };
