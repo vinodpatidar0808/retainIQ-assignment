@@ -79,6 +79,8 @@ const Row = ({ tableData, setTableData, data, rowIndex, setHeaders, dragItem, dr
               url={item.url}
               title={item.title}
               key={ind}
+              rowIndex={rowIndex}
+              columnIndex={ind}
             />
           );
         })}

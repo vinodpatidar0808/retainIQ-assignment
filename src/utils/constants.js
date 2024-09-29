@@ -1,4 +1,6 @@
-export const initialTableState = [{ tags: ["sale","contains","new"], columns: [{}], selectedTags: {"new": true, } }];
+export const initialTableState = [
+  { tags: ['sale', 'contains', 'new'], columns: [{}], selectedTags: { new: true } },
+];
 
 export const getDefaultRowState = (numberOfColums = 1) => {
   return {
@@ -13,103 +15,119 @@ export const maxNumberOfColumns = 10;
 
 export const sampleData = [
   {
-    id: 1,
+    id: '64f2db47b4aefa1d6bff5979', // MongoDB-style ObjectId
+    url: 'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    title: 'Woman in White T-Shirt',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5980',
     url: 'https://burst.shopifycdn.com/photos/t-shirt-store.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'T-Shirt Store',
+    title: 'T-Shirt Store Display',
   },
   {
-    id: 2,
-    url: 'https://burst.shopifycdn.com/photos/model-in-red-suit.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Fashion Model in Red Suit',
-  },
-  {
-    id: 3,
-    url: 'https://images.pexels.com/photos/1111236/pexels-photo-1111236.jpeg?cs=srgb&dl=pexels-woman-in-white-tank-top-holding-yellow-tank-top-shirt-1111236.jpg&fm=jpg',
-    title: 'Woman Holding Yellow Tank Top',
-  },
-  {
-    id: 4,
+    id: '64f2db47b4aefa1d6bff5983',
     url: 'https://burst.shopifycdn.com/photos/rack-of-blank-tshirts.jpg?width=925&format=pjpg&exif=1&iptc=1',
     title: 'Rack of Blank T-Shirts',
   },
   {
-    id: 5,
-    url: 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?cs=srgb&dl=pexels-cottonbro-studio-2983464.jpg&fm=jpg',
-    title: 'Man in Black Suit Holding Bag',
-  },
-  {
-    id: 6,
-    url: 'https://images.pexels.com/photos/2983460/pexels-photo-2983460.jpeg?cs=srgb&dl=pexels-cottonbro-studio-2983460.jpg&fm=jpg',
-    title: 'Woman in White Dress with Handbag',
-  },
-  {
-    id: 7,
-    url: 'https://burst.shopifycdn.com/photos/mens-tshirts.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Men’s T-Shirts',
-  },
-  {
-    id: 8,
-    url: 'https://burst.shopifycdn.com/photos/leather-bag-with-travel-items.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Leather Bag with Travel Items',
-  },
-  {
-    id: 9,
+    id: '64f2db47b4aefa1d6bff5984',
     url: 'https://images.pexels.com/photos/2983462/pexels-photo-2983462.jpeg?cs=srgb&dl=pexels-cottonbro-studio-2983462.jpg&fm=jpg',
     title: 'Close-up of Shoes',
   },
   {
-    id: 10,
-    url: 'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?cs=srgb&dl=pexels-kaique-rocha-322207.jpg&fm=jpg',
-    title: 'Woman in White T-Shirt',
+    id: '64f2db47b4aefa1d6bff5987',
+    url: 'https://burst.shopifycdn.com/photos/mens-tshirts.jpg?width=925&format=pjpg&exif=1&iptc=1',
+    title: 'Men’s T-Shirts on Display',
   },
   {
-    id: 11,
+    id: '64f2db47b4aefa1d6bff5988',
+    url: 'https://images.pexels.com/photos/322088/pexels-photo-322088.jpeg?cs=srgb&dl=pexels-photo-322088.jpg&fm=jpg',
+    title: 'Person in Black T-Shirt',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5989',
+    url: 'https://images.pexels.com/photos/2983464/pexels-photo-2983464.jpeg?cs=srgb&dl=pexels-cottonbro-studio-2983464.jpg&fm=jpg',
+    title: 'Man Holding Shopping Bag',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5990',
+    url: 'https://images.pexels.com/photos/322207/pexels-photo-322207.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    title: 'Person Holding Black Jacket',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5993',
+    url: 'https://images.pexels.com/photos/2899675/pexels-photo-2899675.jpeg?cs=srgb&dl=pexels-photo-2899675.jpg&fm=jpg',
+    title: 'Woman Holding Sunglasses',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5994',
+    url: 'https://images.pexels.com/photos/1024252/pexels-photo-1024252.jpeg?cs=srgb&dl=pexels-photo-1024252.jpg&fm=jpg',
+    title: 'Stylish Winter Outfit',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5995',
+    url: 'https://images.pexels.com/photos/1040427/pexels-photo-1040427.jpeg?cs=srgb&dl=pexels-photo-1040427.jpg&fm=jpg',
+    title: 'Minimalist Casual Clothing',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5996',
+    url: 'https://images.pexels.com/photos/1124466/pexels-photo-1124466.jpeg?cs=srgb&dl=pexels-photo-1124466.jpg&fm=jpg',
+    title: 'Person Wearing Backpack',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5997',
+    url: 'https://images.pexels.com/photos/2899703/pexels-photo-2899703.jpeg?cs=srgb&dl=pexels-photo-2899703.jpg&fm=jpg',
+    title: 'Denim Jacket and Jeans',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff5998',
     url: 'https://burst.shopifycdn.com/photos/fashion-model-in-pink.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Fashion Model in Pink',
+    title: 'Fashion Model in Pink Dress',
   },
   {
-    id: 12,
-    url: 'https://images.pexels.com/photos/1111237/pexels-photo-1111237.jpeg?cs=srgb&dl=pexels-photo-1111237.jpg&fm=jpg',
-    title: 'Blue T-Shirt Hanging',
-  },
-  {
-    id: 13,
-    url: 'https://burst.shopifycdn.com/photos/womens-fashion-on-hangers.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Women’s Fashion on Hangers',
-  },
-  {
-    id: 14,
+    id: '64f2db47b4aefa1d6bff5999',
     url: 'https://images.pexels.com/photos/2983463/pexels-photo-2983463.jpeg?cs=srgb&dl=pexels-cottonbro-studio-2983463.jpg&fm=jpg',
     title: 'Person in Hoodie and Sweatpants',
   },
   {
-    id: 15,
+    id: '64f2db47b4aefa1d6bff6003',
+    url: 'https://images.pexels.com/photos/991509/pexels-photo-991509.jpeg?cs=srgb&dl=pexels-photo-991509.jpg&fm=jpg',
+    title: 'Woman Wearing Black Outfit',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff6004',
+    url: 'https://images.pexels.com/photos/2983460/pexels-photo-2983460.jpeg?cs=srgb&dl=pexels-cottonbro-studio-2983460.jpg&fm=jpg',
+    title: 'Woman in White Dress with Handbag',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff6005',
+    url: 'https://images.pexels.com/photos/2899681/pexels-photo-2899681.jpeg?cs=srgb&dl=pexels-photo-2899681.jpg&fm=jpg',
+    title: 'Man in Brown Leather Jacket',
+  },
+  {
+    id: '64f2db47b4aefa1d6bff6006',
     url: 'https://images.pexels.com/photos/1111235/pexels-photo-1111235.jpeg?cs=srgb&dl=pexels-photo-1111235.jpg&fm=jpg',
     title: 'Woman in Grey Dress Shirt',
   },
+
   {
-    id: 16,
-    url: 'https://images.pexels.com/photos/1111234/pexels-photo-1111234.jpeg?cs=srgb&dl=pexels-photo-1111234.jpg&fm=jpg',
-    title: 'Plaid Shirt on Table',
+    id: '64f2db47b4aefa1d6bff6009',
+    url: 'https://images.pexels.com/photos/3771831/pexels-photo-3771831.jpeg?cs=srgb&dl=pexels-photo-3771831.jpg&fm=jpg',
+    title: 'Woman Wearing Yellow Jacket',
   },
   {
-    id: 17,
-    url: 'https://burst.shopifycdn.com/photos/fashion-model-leather-jacket-over-shoulders.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Model with Leather Jacket',
+    id: '64f2db47b4aefa1d6bff6010',
+    url: 'https://images.pexels.com/photos/179909/pexels-photo-179909.jpeg?cs=srgb&dl=pexels-photo-179909.jpg&fm=jpg',
+    title: 'Casual Street Style',
   },
   {
-    id: 18,
-    url: 'https://images.pexels.com/photos/170412/pexels-photo-170412.jpeg?cs=srgb&dl=pexels-photo-170412.jpg&fm=jpg',
-    title: 'Pile of Laundry',
+    id: '64f2db47b4aefa1d6bff6011',
+    url: 'https://images.pexels.com/photos/1477473/pexels-photo-1477473.jpeg?cs=srgb&dl=pexels-photo-1477473.jpg&fm=jpg',
+    title: 'Woman in Green Dress',
   },
   {
-    id: 19,
-    url: 'https://images.pexels.com/photos/1111238/pexels-photo-1111238.jpeg?cs=srgb&dl=pexels-photo-1111238.jpg&fm=jpg',
-    title: 'Man in White and Tan Outfit',
-  },
-  {
-    id: 20,
-    url: 'https://burst.shopifycdn.com/photos/green-tshirt.jpg?width=925&format=pjpg&exif=1&iptc=1',
-    title: 'Green T-Shirt',
+    id: '64f2db47b4aefa1d6bff6012',
+    url: 'https://images.pexels.com/photos/2983467/pexels-photo-2983467.jpeg?cs=srgb&dl=pexels-photo-2983467.jpg&fm=jpg',
+    title: 'Man in Black Suit',
   },
 ];
