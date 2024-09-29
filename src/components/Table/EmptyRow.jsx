@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
-import { getDefaultRowState } from '../../utils/constants';
+import { getDefaultRowState, showToastMessage } from '../../utils/constants';
 
 const EmptyRow = ({ setTableData, numberOfColumns }) => {
   const [loading, setLoading] = useState(false);
@@ -9,6 +9,7 @@ const EmptyRow = ({ setTableData, numberOfColumns }) => {
     // putting timeout to show the loading spinner and effect
     setTimeout(() => {
       setTableData((curr) => [...curr, getDefaultRowState(numberOfColumns)]);
+      showToastMessage('SUCCESS', 'Row Added');
       setLoading(false);
     }, 500);
   };
@@ -20,6 +21,7 @@ const EmptyRow = ({ setTableData, numberOfColumns }) => {
         className={`outline-none hover:shadow-md  bg-white flex w-fit border py-3 px-3 rounded-md items-center gap-2  text-ellipsis overflow-hidden whitespace-nowrap`}>
         {!loading ? <FaPlus /> : <div className="loader-spinner w-3 "></div>}
       </button>
+
     </div>
   );
 };

@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export const initialTableState = [
   { tags: ['sale', 'contains', 'new'], columns: [{}], selectedTags: { new: true } },
 ];
@@ -12,6 +14,23 @@ export const getDefaultRowState = (numberOfColums = 1) => {
 
 export const maxNumberOfRows = 10;
 export const maxNumberOfColumns = 10;
+
+export const showToastMessage = (type, message) => {
+  if (type === 'SUCCESS') {
+    toast.success(message, {
+      position: 'top-center',
+      autoClose: 700,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light',
+    });
+  }
+  // Add other types when needed
+  
+};
 
 export const sampleData = [
   {

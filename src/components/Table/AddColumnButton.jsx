@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
+import { showToastMessage } from '../../utils/constants';
 
 const AddColumnButton = ({ setTableData, setHeaders }) => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,7 @@ const AddColumnButton = ({ setTableData, setHeaders }) => {
         return curr.map((item) => ({ ...item, columns: [...item.columns, {}] }));
       });
       setHeaders((curr) => [...curr, { isPrimary: false, name: `Variant ${curr.length + 1}` }]);
+      showToastMessage('SUCCESS', 'Variant Added');
       setLoading(false);
     }, 500);
   };
