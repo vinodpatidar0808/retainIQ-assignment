@@ -1,11 +1,18 @@
+import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa6';
 
 const AddColumnButton = ({ setTableData, setHeaders }) => {
+  const [loading, setLoading] = useState(false);
   const handleAddColumn = () => {
-    setTableData((curr) => {
-      return curr.map((item) => ({ ...item, columns: [...item.columns, {}] }));
-    });
-    setHeaders((curr) => [...curr, { isPrimary: false, name: `Variant ${curr.length + 1}` }]);
+    setLoading(true);
+    // putting timeout to show the loading spinner and effect
+    setTimeout(() => {
+      setTableData((curr) => {
+        return curr.map((item) => ({ ...item, columns: [...item.columns, {}] }));
+      });
+      setHeaders((curr) => [...curr, { isPrimary: false, name: `Variant ${curr.length + 1}` }]);
+      setLoading(false);
+    }, 500);
   };
 
   return (
@@ -14,7 +21,7 @@ const AddColumnButton = ({ setTableData, setHeaders }) => {
         <button
           onClick={handleAddColumn}
           className={`outline-none hover:shadow-md  bg-white flex w-fit border py-3 px-3 rounded-md items-center gap-2  text-ellipsis overflow-hidden whitespace-nowrap`}>
-          <FaPlus />
+          {!loading ? <FaPlus /> : <div className="loader-spinner w-3 "></div>}
         </button>
       </div>
     </div>
